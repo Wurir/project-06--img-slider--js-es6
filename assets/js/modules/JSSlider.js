@@ -21,20 +21,10 @@ export default class JSSlider {
 
         });
 
+        this.assignEvent('.js-slider__nav--next', 'js-slider-img-next')
 
-        const navNext = sliderRootElement.querySelector('.js-slider__nav--next');
-        if (navNext) {
-            navNext.addEventListener('click', (e) => {
-                thisContext.fireCustomEvent(sliderRootElement, 'js-slider-img-next')
-            });
-        }
+        this.assignEvent('.js-slider__nav--prev', 'js-slider-img-prev')
 
-        const navPrev = sliderRootElement.querySelector('.js-slider__nav--prev');
-        if (navPrev) {
-            navPrev.addEventListener('click', (e) => {
-                thisContext.fireCustomEvent(sliderRootElement, 'js-slider-img-prev')
-            });
-        }
 
         const zoom = sliderRootElement.querySelector('.js-slider__zoom');
         if (zoom) {
@@ -42,6 +32,17 @@ export default class JSSlider {
                 if (e.target === e.currentTarget) {
                     thisContext.fireCustomEvent(sliderRootElement, 'js-slider-close');
                 }
+            })
+        }
+    }
+
+    assignEvent(selector, customEvent){
+        const sliderRootElement = document.querySelector(this.sliderRootSelector);
+        const element = sliderRootElement.querySelector(selector)
+        
+        if(element){
+            element.addEventListener('click', e => {
+                this.fireCustomEvent(sliderRootElement, customEvent)
             })
         }
     }
