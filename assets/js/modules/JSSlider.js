@@ -22,7 +22,6 @@ export default class JSSlider {
         });
 
         this.assignEvent('.js-slider__nav--next', 'js-slider-img-next')
-
         this.assignEvent('.js-slider__nav--prev', 'js-slider-img-prev')
 
 
